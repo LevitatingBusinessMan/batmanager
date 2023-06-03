@@ -1,4 +1,3 @@
-#![feature(once_cell)]
 use std::{fs::{File, OpenOptions}, io::{Write, Read}};
 use anyhow::anyhow;
 use clap::Parser;
