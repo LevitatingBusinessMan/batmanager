@@ -21,6 +21,8 @@ Turn off rapid charge mode: `batmanager -r off`
 Turn conservation mode off, rapid charge on and set performance mode to "Intelligent Cooling" : `batmanager -c0 -r1 -p1`  
 
 ### Installation
+This tool relies on the [acpi_call](https://github.com/nix-community/acpi_call) kernel module.  
+
 #### Cargo
 ```
 cargo install batmanager
