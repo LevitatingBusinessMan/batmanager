@@ -1,5 +1,5 @@
 use std::{fs::{File, OpenOptions}, io::{Write, Read}};
-use anyhow::anyhow;
+use anyhow::{anyhow, Context};
 use clap::Parser;
 use colored::Colorize;
 use anyhow::Result;
@@ -163,5 +163,8 @@ fn get_acpi_response(mut file: File) -> Result<u8> {
 // At first I was opening it once and storing it in a OnceLock
 // But acpi_call only works when you repoen it per command
 fn open_file() -> Result<File, anyhow::Error> {
-    Ok(OpenOptions::new().read(true).write(true).open("/proc/acpi/call")?)
+    Ok(
+        OpenOptions::new().read(true).write(true).open("/proc/acpi/call")
+        .context("Failed to open /proc/acpi/call.\nIs is the 'acpi_call' module loaded?")?
+    )
 }
